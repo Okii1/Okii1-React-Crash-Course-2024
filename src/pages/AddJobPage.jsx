@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {toast} from 'react-toastify';
 
 const AddJobPage = ({ addJobSubmit }) => {
     const [title, setTitle] = useState('');
@@ -33,6 +34,9 @@ const AddJobPage = ({ addJobSubmit }) => {
 
         try {
             await addJobSubmit(newJob);
+
+            toast.success('Job Added Successfully');
+
             navigate('/jobs');
         } catch (error) {
             console.error('Failed to add job:', error);
